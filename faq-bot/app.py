@@ -5,11 +5,23 @@ from rapidfuzz import fuzz
 
 st.set_page_config(page_title="Mini FAQ Bot", page_icon="💬")
 
-st.title("💬 미니 FAQ 챗봇")
+st.title("💬 기숙사 FAQ 챗봇")
 st.caption("😊 무엇을 도와드릴까요? 편하게 질문해 주세요.")
 
 @st.cache_data
 def load_faq(path="faq.csv"):
+    # 절대 경로 변환
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    if not os.path.isabs(path):
+        path = os.path.join(base_dir, path)
+
+    # 디버깅: 파일이 없으면 현재 폴더의 파일 목록을 화면에 보여줌
+    if not os.path.exists(path):
+        st.error(f"❌ 파일을 찾을 수 없습니다: {path}")
+        st.write("📂 현재 폴더에 있는 파일들:")
+        st.code(os.listdir(base_dir))
+        st.stop()
+
     df = pd.read_csv(path).fillna("")
     # 검색용 텍스트(초급 핵심)
     df["search_text"] = (
