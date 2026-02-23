@@ -37,7 +37,7 @@ def score(query: str, text: str) -> int:
     # partial_ratio: 포함/유사 표현에 강함(초급에 잘 맞음)
     return fuzz.partial_ratio(query.lower(), text)
 
-query = st.text_input("질문을 입력하세요", placeholder="예: 환불 규정이 어떻게 되나요?")
+query = st.text_input("질문을 입력하세요", placeholder="예: 숙소 사용료는 어떻게 되나요?")
 
 if query:
     df2 = df.copy()
