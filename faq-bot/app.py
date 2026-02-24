@@ -77,7 +77,7 @@ if query:
             picked = st.selectbox("카테고리 선택", ["선택"] + categories)
 
             st.write("필요하면 문의로 바로 연결하세요:")
-            st.markdown("- 이메일: info@creativeflow.co.kr")
+            st.markdown("- 오픈 채팅방 링크 🔗")
 
             if picked != "선택":
                 st.info(f"선택 카테고리: {picked} — 이 범주의 FAQ를 더 추가하면 정확도가 올라갑니다.")
